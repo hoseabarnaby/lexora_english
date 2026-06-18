@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' blob: data:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" http-equiv="Content-Security-Policy"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="index,follow" name="robots"/>
+<title>Lexora English Boost</title>
+<meta content="Lexora English Boost: aplikasi belajar English dan IELTS tanpa login, dengan 5000 vocabulary, grammar, listening, reading, speaking, writing, test modules, dan progress belajar." name="description"/>
+<link href="style.css" rel="stylesheet"/>
+
+
+<script defer="" src="data/vocab-5000.js"></script>
+<script defer="" src="script.js"></script>
+</head>
+<body class="light account-ready">
+<div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div>
+
+
+<div class="app">
+<div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="appSidebar">
+<div class="sidebar-head">
+<div class="brand compact-brand">
+<div class="logo">LX</div>
+<div><h1>Lexora</h1><p>English &amp; IELTS Studio</p></div>
+</div>
+<button aria-label="Close menu" class="sidebar-close" id="sidebarCloseBtn">×</button>
+</div>
+<nav class="nav clean-nav" id="nav">
+<button class="nav-item active" data-view="dashboard"><span>⌂</span><b>Dashboard</b></button>
+<details class="nav-group" open="">
+<summary><span>Learn</span><small>materi utama</small></summary>
+<div class="nav-group-items">
+<button class="nav-item" data-view="vocab"><span>Aa</span><b>Vocabulary</b></button>
+<button class="nav-item" data-view="grammar"><span>G</span><b>Grammar</b></button>
+<button class="nav-item" data-view="listening"><span>◖</span><b>Listening</b></button>
+<button class="nav-item" data-view="reading"><span>R</span><b>Reading</b></button>
+<button class="nav-item" data-view="expressions"><span>“”</span><b>Expressions</b></button>
+<button class="nav-item" data-view="idioms"><span>∞</span><b>Idioms</b></button>
+</div>
+</details>
+<details class="nav-group" open="">
+<summary><span>Practice</span><small>latihan aktif</small></summary>
+<div class="nav-group-items">
+<button class="nav-item" data-view="flashcard"><span>↻</span><b>Daily Review</b></button>
+<button class="nav-item" data-view="testbank"><span>✓</span><b>Test Modules</b></button>
+<button class="nav-item" data-view="writing"><span>W</span><b>Writing Check</b></button>
+<button class="nav-item" data-view="speaking"><span>◉</span><b>Speaking</b></button>
+</div>
+</details>
+<details class="nav-group">
+<summary><span>Progress</span><small>hasil belajarmu</small></summary>
+<div class="nav-group-items">
+<button class="nav-item" data-view="hardwords"><span>★</span><b>My Hard Words</b></button>
+<button class="nav-item" data-view="progress"><span>↗</span><b>Analytics</b></button>
+</div>
+</details>
+</nav>
+<div class="sidebar-account">
+
+
+<div class="mission-mini">
+<div><span>Today</span><strong id="todayMission">Review 20 cards</strong></div>
+<div class="progress"><span id="missionBar"></span></div>
+<small id="cloudMini">Local progress</small>
+</div>
+</div>
+</aside>
+<main class="main">
+<header class="topbar clean-topbar">
+<div class="topbar-left">
+<button aria-label="Open menu" class="mobile-menu-btn" id="sidebarOpenBtn">☰</button>
+<div>
+<p class="eyebrow" id="pageEyebrow">YOUR LEARNING SPACE</p>
+<h2 id="pageTitle">Dashboard</h2>
+</div>
+</div>
+<div class="top-actions compact-actions">
+<span class="local-save-pill" id="localSaveStatus">✓ Saved on this browser</span><span class="session-dot local-dot" title="Progress tersimpan di browser ini"></span>
+
+
+<button class="icon-btn" id="openDailyTipBtn" title="Daily Tip">✦</button>
+<button class="icon-btn" id="themeBtn" title="Fresh light theme">☀</button>
+
+<span class="hidden" id="syncBadge">Local progress</span>
+<span class="hidden" id="vocabBadge">5000 vocab</span>
+<span class="hidden" id="securityBadge">Security ON</span>
+</div>
+</header>
+<section class="view active" id="dashboardView">
+<div class="welcome-card">
+<div class="welcome-copy">
+<span class="welcome-kicker">TODAY'S STUDY PLAN</span>
+<h3 id="dashboardGreeting">Welcome back 👋</h3>
+<p>Jangan buka semua fitur sekaligus. Selesaikan tiga langkah kecil hari ini, lalu berhenti dengan rasa menang.</p>
+<div class="welcome-actions">
+<button class="btn primary" data-jump="flashcard">Start daily review</button>
+<button class="btn secondary" data-jump="testbank">Continue test module</button>
+</div>
+</div>
+<div class="today-score-card">
+<span>Daily streak</span>
+<strong id="statStreak">0🔥</strong>
+<small id="statBestStreak">Best: 0 days</small>
+</div>
+</div>
+<div class="dashboard-grid main-dashboard-grid">
+<section class="panel today-panel">
+<div class="panel-head"><div><span class="section-kicker">TODAY</span><h3>Your next 3 steps</h3></div><span class="tag">15–30 min</span></div>
+<div class="task-stack">
+<button class="task-card" data-jump="flashcard">
+<span class="task-number">1</span><div><b>Review due vocabulary</b><p><strong id="hubDueCount">0</strong> cards waiting for review.</p></div><span class="task-arrow">→</span>
+</button>
+<button class="task-card" data-jump="testbank">
+<span class="task-number">2</span><div><b>Continue your test path</b><p id="hubNextModule">Start Module 1 from your target band.</p></div><span class="task-arrow">→</span>
+</button>
+<button class="task-card" data-jump="hardwords">
+<span class="task-number">3</span><div><b>Fix difficult words</b><p><strong id="hubHardCount">0</strong> hard words need extra attention.</p></div><span class="task-arrow">→</span>
+</button>
+</div>
+</section>
+<section class="panel weekly-panel">
+<div class="panel-head"><div><span class="section-kicker">THIS WEEK</span><h3>Consistency</h3></div><button class="text-button" data-jump="progress">View analytics</button></div>
+<div class="weekly-bars" id="dashboardWeeklyBars"></div>
+<div class="weekly-summary">
+<div><strong id="hubAverageScore">0%</strong><span>Average score</span></div>
+<div><strong id="dashboardWeeklySessions">0</strong><span>Active days</span></div>
+</div>
+</section>
+</div>
+<section class="panel learning-path-panel">
+<div class="panel-head"><div><span class="section-kicker">LEARNING PATH</span><h3>Choose your target band</h3></div><span class="tag">step by step</span></div>
+<p class="soft compact-copy">Mulai dari level yang paling dekat dengan kemampuanmu. Kamu bisa pindah level kapan saja, tetapi sebaiknya selesaikan modul secara berurutan.</p>
+<div class="band-path dashboard-band-path" id="dashboardBandPath"></div>
+</section>
+<div class="dashboard-grid lower-dashboard-grid">
+<section class="panel hard-panel-clean">
+<div class="panel-head"><div><span class="section-kicker">PERSONAL REVIEW</span><h3>My Hard Words</h3></div><span class="tag" id="hardWordsCountTag">0 words</span></div>
+<div class="hard-preview" id="dashboardHardWords"></div>
+<button class="text-button bottom-link" data-jump="hardwords">Open full hard-word review →</button>
+</section>
+<section class="panel quick-start-panel">
+<div class="panel-head"><div><span class="section-kicker">QUICK START</span><h3>Pick one skill</h3></div></div>
+<div class="skill-shortcuts">
+<button data-jump="grammar"><span>G</span><div><b>Grammar</b><small>Simple lessons</small></div></button>
+<button data-jump="listening"><span>◖</span><div><b>Listening</b><small>Audio &amp; video</small></div></button>
+<button data-jump="reading"><span>R</span><div><b>Reading</b><small>Passages</small></div></button>
+<button data-jump="writing"><span>W</span><div><b>Writing</b><small>Check mistakes</small></div></button>
+</div>
+</section>
+</div>
+<section class="panel compact-stats-panel">
+<div class="compact-stat"><span>Total vocabulary</span><strong id="statTotal">0</strong></div>
+<div class="compact-stat"><span>Due today</span><strong id="statDue">0</strong></div>
+<div class="compact-stat"><span>Mastered</span><strong id="statMastered">0</strong></div>
+<div class="compact-stat"><span>Average score</span><strong id="statAverage">0%</strong></div>
+</section>
+<section class="panel streak-clean-panel">
+<div class="panel-head"><div><span class="section-kicker">STREAK</span><h3 id="streakBig">0 days</h3></div><span class="tag" id="streakStatus">Start today</span></div>
+<div class="streak-meta"><span>Best: <b id="streakBest">0 days</b></span><span>Today: <b id="streakToday">Belum</b></span></div>
+<div class="streak-strip" id="streakStrip"></div>
+</section>
+<div aria-hidden="true" class="dashboard-render-sinks hidden">
+<span id="dueCountTag">0 cards</span>
+<div id="planList"></div><div id="dueList"></div>
+<div id="coachMessage"></div><ul id="coachChecklist"></ul>
+<button id="openDailyTipBtn2"></button>
+</div>
+</section>
+
+
+<section class="view" id="vocabView">
+<div class="panel">
+<div class="panel-head"><h3>Vocabulary Library</h3><span class="tag">5000+ words</span></div>
+<div class="toolbar">
+<input class="input" id="searchInput" placeholder="Search word, arti, topic, synonym..."/>
+<select class="input" id="levelFilter"><option value="all">All levels</option></select>
+<select class="input" id="topicFilter"><option value="all">All topics</option></select>
+<select class="input" id="sortFilter"><option value="due">Sort: due first</option><option value="word">Sort: A-Z</option><option value="hard">Sort: hardest</option><option value="mastered">Sort: mastered</option></select>
+<button class="btn primary" id="addWordBtn">+ Add</button>
+
+</div>
+<div class="vocab-layout">
+<div class="word-list" id="wordList"></div>
+<div class="word-detail" id="wordDetail"></div>
+</div>
+</div>
+</section>
+<section class="view" id="expressionsView">
+<div class="panel">
+<div class="panel-head"><h3>Daily Expressions</h3><span class="tag">conversation + speaking</span></div>
+<p class="soft">Belajar expression utuh biasanya lebih mudah diingat daripada kata tunggal. Dengarkan, tirukan, dan ulangi sedikit demi sedikit.</p>
+<div class="toolbar">
+<input class="input" id="expressionSearch" placeholder="Cari expression atau arti..."/>
+<select class="input" id="expressionCategory"><option value="all">All categories</option></select>
+<button class="btn secondary" id="shuffleExpressionBtn">Random Cards</button>
+</div>
+<div class="expression-grid" id="expressionGrid"></div>
+</div>
+<div class="panel">
+<div class="panel-head"><h3>My Hard Words — 6-Step Review</h3><span class="tag">private list</span></div>
+<p class="soft">Ini list pribadi untuk kata yang kamu susah hafal. Tambahkan dari halaman Vocabulary dengan tombol <b>⭐ Sulit Diingat</b>. Data ini tersimpan otomatis di browser perangkatmu dan hanya terlihat di perangkat tersebut.</p>
+<div class="review-table-wrap">
+<table class="review-table">
+<thead><tr><th>No</th><th>Word / Phrase</th><th>Arti</th><th>Review</th><th>Action</th></tr></thead>
+<tbody id="reviewTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="view" id="idiomsView">
+<div class="panel">
+<div class="panel-head"><h3>IELTS Idioms &amp; Phrasal Expressions</h3><span class="tag">speaking • listening • writing caution</span></div>
+<p class="soft">Idiom boleh membantu Speaking kalau natural, tetapi tidak semua cocok untuk Writing. Di sini idiom dipisah: aman untuk speaking, perlu dipahami untuk listening/reading, dan yang sebaiknya diubah menjadi academic phrase.</p>
+<div class="idiom-warning">
+<b>Rule gampang:</b> Speaking boleh pakai sedikit idiom yang natural. Writing Task 2 lebih aman pakai academic phrase, misalnya <b>a big deal</b> → <b>a significant issue</b>.
+          </div>
+<div class="toolbar">
+<input class="input" id="idiomSearch" placeholder="Cari idiom, arti, contoh, atau academic alternative..."/>
+<select class="input" id="idiomUseFilter">
+<option value="all">All uses</option>
+<option value="Speaking safe">Safe for Speaking</option>
+<option value="Understand">Listening/Reading</option>
+<option value="Avoid in writing">Avoid in Writing</option>
+<option value="Writing caution">Writing Caution</option>
+</select>
+<select class="input" id="idiomCategoryFilter"><option value="all">All categories</option></select>
+<button class="btn secondary" id="shuffleIdiomsBtn">Random Idioms</button>
+</div>
+<div class="idiom-grid" id="idiomGrid"></div>
+</div>
+</section>
+<section class="view" id="hardwordsView">
+<div class="panel">
+<div class="panel-head"><h3>My Hard Words — 6-Step Review</h3><span class="tag">private account list</span></div>
+<p class="soft">Ini tempat khusus kata yang susah kamu ingat. Klik ⭐ Sulit Diingat di halaman Vocabulary, lalu kata itu masuk ke sini dan tersimpan otomatis di browser ini.</p>
+<div class="review-table-wrap">
+<table class="review-table">
+<thead><tr><th>No</th><th>Word / Phrase</th><th>Arti Indonesia</th><th>Review</th><th>Action</th></tr></thead>
+<tbody id="hardWordsTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="view" id="flashcardView">
+<div class="panel flash-panel">
+<div class="panel-head"><h3>Spaced Repetition Flashcard</h3><span class="tag" id="flashCounter">0 due</span></div>
+<div class="flashcard" id="flashCard">
+<p class="label" id="flashMeta">Level • Topic</p>
+<h2 id="flashWord">Loading...</h2>
+<p id="flashHint">Tekan show answer untuk melihat arti, definisi, dan contoh.</p>
+<div class="answer-box hidden" id="flashAnswer"></div>
+</div>
+<div class="center-actions">
+<button class="btn secondary" id="listenFlashBtn">🔊 Listen</button>
+<button class="btn primary" id="showAnswerBtn">Show Answer</button>
+<button class="btn ghost" id="skipCardBtn">Skip</button>
+</div>
+<div class="review-actions hidden" id="reviewActions">
+<button class="review again" data-grade="0"><strong>Again</strong><small>0 day</small></button>
+<button class="review hard" data-grade="1"><strong>Hard</strong><small>1 day</small></button>
+<button class="review good" data-grade="2"><strong>Good</strong><small>+ interval</small></button>
+<button class="review easy" data-grade="3"><strong>Easy</strong><small>longer</small></button>
+</div>
+</div>
+</section>
+<section class="view" id="testbankView">
+<div class="panel">
+<div class="panel-head"><h3>IELTS Test Bank</h3><span class="tag">10 modules per level • saved score</span></div>
+<div class="toolbar test-toolbar">
+<select class="input" id="testBand">
+<option value="beginner">Beginner Foundation</option>
+<option value="natural">Natural English</option>
+<option value="advanced">Advanced Builder</option>
+<option value="band5">IELTS Band 5</option>
+<option value="band6">IELTS Band 6</option>
+<option value="band7">IELTS Band 7</option>
+<option value="band8">IELTS Band 8–9</option>
+</select>
+<select class="input" id="testType">
+<option value="module">Recommended Module</option>
+<option value="vocab-meaning">Vocabulary: Meaning</option>
+<option value="vocab-example">Vocabulary: Fill Sentence</option>
+<option value="grammar">Grammar IELTS: Quick Mixed</option>
+<option value="grammar-intensive">Grammar Intensive: 20-soal Pack</option>
+<option value="grammar-pack:past-tenses">Past Tenses Full Pack</option>
+<option value="idiom-meaning">Idioms: Meaning &amp; Use</option>
+<option value="listening-mini">Listening: IELTS Mini</option>
+<option value="reading-mini">Reading Mini</option>
+<option value="mixed">Mixed IELTS</option>
+</select>
+<select class="input" id="testModule"></select>
+<select class="input" id="testSize"><option value="10">10 soal</option><option selected="" value="15">15 soal</option><option value="20">20 soal</option><option value="30">30 soal</option></select>
+<button class="btn primary" id="startTestBtn">Start Test</button>
+<button class="btn secondary" id="showHistoryBtn">History</button>
+</div>
+<div class="test-level-info" id="testLevelInfo"></div>
+<div class="notice small-notice"><b>Path latihan:</b> pilih level seperti IELTS Band 5, kerjakan Module 1–10 berurutan. Sistem akan mencoba memberi soal baru dari bank soal dan generator supaya tidak terasa mengulang.</div>
+<div class="module-grid" id="testModuleGrid"></div>
+<div class="test-progress"><span id="testProgressBar"></span></div>
+<div class="test-area empty-state" id="testArea">Pilih target level, lalu selesaikan Module 1 sampai Module 10. Tiap module punya 10–15 soal dan progress tersimpan otomatis di browser.</div>
+</div>
+</section>
+<section class="view" id="progressView">
+<div class="panel">
+<div class="panel-head"><h3>Learning Analytics</h3><span class="tag">database integrated</span></div>
+<p class="soft">Grafik ini membaca quiz score, completed modules, streak, hard words, reading/listening, dan aktivitas harian. Data tersimpan otomatis di browser perangkat ini.</p>
+<div class="analytics-grid" id="analyticsGrid"></div>
+</div>
+<div class="grid two">
+<div class="panel">
+<div class="panel-head"><h3>Module Progress</h3><span class="tag" id="moduleProgressTag">0 done</span></div>
+<div class="module-progress-list" id="moduleProgressList"></div>
+</div>
+<div class="panel">
+<div class="panel-head"><h3>Score Trend</h3><span class="tag">last attempts</span></div>
+<div class="bar-chart" id="scoreTrendChart"></div>
+</div>
+</div>
+</section>
+<section class="view" id="grammarView">
+<div class="panel">
+<div class="panel-head"><h3>Grammar for IELTS</h3><span class="tag">Band 5–9 path • 100+ questions</span></div>
+<p class="soft">Pilih target band supaya kamu tahu urutan belajar. Setiap lesson sekarang punya rumus (+), (-), (?) lengkap dengan kapan dipakai, contoh daily conversation, dan contoh IELTS.</p>
+<div class="band-path" id="grammarBandPath"></div>
+<div class="toolbar">
+<select class="input" id="grammarBandFilter">
+<option value="all">All target bands</option>
+<option value="band5">Band 5 Foundation</option>
+<option value="band6">Band 6 Builder</option>
+<option value="band7">Band 7 Academic</option>
+<option value="band8">Band 8–9 Precision</option>
+</select>
+<button class="btn secondary" id="startBandPlanBtn">Start Recommended Order</button>
+<select class="input" id="grammarPracticeLesson"><option value="past-tenses">Past Tenses Full Pack</option></select>
+<button class="btn primary" id="startGrammarPackBtn">Start 20-Question Pack</button>
+</div>
+<div class="grammar-grid" id="grammarGrid"></div>
+</div>
+<div class="panel lesson-panel hidden" id="lessonPanel"></div>
+</section>
+<section class="view" id="listeningView">
+<div class="panel">
+<div class="panel-head"><h3>Listening Lab</h3><span class="tag">curated videos + IELTS simulations</span></div>
+<p class="soft">Pilih lesson, tonton video atau putar audio original, lalu jawab soal IELTS-style. Untuk video YouTube, website menyediakan companion notes dan questions original, bukan salinan transcript penuh.</p>
+<div class="toolbar">
+<input class="input" id="listeningSearch" placeholder="Cari topic, title, source..."/>
+<select class="input" id="listeningTypeFilter"><option value="all">All listening</option><option value="video">Curated YouTube videos</option><option value="simulation">Original IELTS simulations</option></select>
+<select class="input" id="listeningLevelFilter"><option value="all">All levels</option></select>
+<button class="btn secondary" id="randomListeningBtn">Random Lesson</button>
+</div>
+<div class="listening-layout">
+<div class="listening-list" id="listeningList"></div>
+<div class="listening-content" id="listeningContent"></div>
+</div>
+</div>
+</section>
+<section class="view" id="readingView">
+<div class="panel">
+<div class="panel-head"><h3>Reading Practice</h3><span class="tag">long passages</span></div>
+<div class="reading-layout">
+<div class="reading-list" id="readingList"></div>
+<div class="reading-content" id="readingContent"></div>
+</div>
+</div>
+</section>
+<section class="view" id="writingView">
+<div class="panel">
+<div class="panel-head"><h3>Writing Practice + Local Correction</h3><span class="tag">Task 1 &amp; 2</span></div>
+<div class="toolbar">
+<select class="input" id="writingPrompt"></select>
+<button class="btn secondary" id="randomWritingBtn">Random Prompt</button>
+<button class="btn ghost" id="loadSampleBtn">Load Sample Draft</button>
+</div>
+<div class="prompt-card" id="writingPromptCard"></div>
+<textarea class="textarea" id="writingText" placeholder="Tulis jawabanmu di sini. Setelah itu klik Check Writing. Website akan cek word count, grammar pattern, repetition, linking words, informal words, dan saran perbaikan."></textarea>
+<div class="center-actions">
+<button class="btn primary" id="checkWritingBtn">Check Writing</button>
+<button class="btn secondary" id="saveWritingBtn">Save Progress</button>
+<button class="btn ghost" id="clearWritingBtn">Clear</button>
+</div>
+<div class="feedback-grid" id="writingFeedback"></div>
+</div>
+</section>
+<section class="view" id="speakingView">
+<div class="grid two">
+<div class="panel">
+<div class="panel-head"><h3>Pronunciation Test</h3><span class="tag">Chrome / Edge</span></div>
+<div class="pronounce-card">
+<p class="label">Target word</p>
+<h2 id="targetPronounce">starving</h2>
+<p id="targetMeaning">sangat lapar</p>
+<div class="center-actions">
+<button class="btn secondary" id="enableMicBtn">🎙️ Enable Mic</button>
+<button class="btn secondary" id="listenPronounceBtn">🔊 Listen</button>
+<button class="btn primary" id="recordPronounceBtn">Speak Now</button>
+<button class="btn ghost" id="nextPronounceBtn">Next</button>
+</div>
+<div class="feedback-box" id="pronounceResult">Kalau popup izin mic tidak muncul, buka lewat <b>http://localhost</b> / Live Server atau hosting HTTPS, lalu klik ikon kamera/mic di address bar browser.</div>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><h3>Speaking Cue Cards</h3><span class="tag">part 1 / 2 / 3</span></div>
+<div class="prompt-card" id="speakingPrompt"></div>
+<textarea class="textarea small" id="speakingNotes" placeholder="Catat ide, vocabulary, atau struktur jawabanmu..."></textarea>
+<div class="center-actions"><button class="btn primary" id="newSpeakingBtn">New Prompt</button><button class="btn secondary" id="saveSpeakingBtn">Save Notes</button></div>
+</div>
+</div>
+</section>
+<footer class="site-footer">Copyright © Hosea 2026</footer>
+</main><nav aria-label="Mobile navigation" class="mobile-bottom-nav">
+<button data-jump="dashboard"><span>⌂</span><small>Home</small></button>
+<button data-jump="vocab"><span>Aa</span><small>Learn</small></button>
+<button data-jump="testbank"><span>✓</span><small>Practice</small></button>
+<button data-jump="progress"><span>↗</span><small>Progress</small></button>
+<button id="mobileMoreBtn"><span>☰</span><small>More</small></button>
+</nav>
+</div>
+<div aria-hidden="true" class="daily-tip-overlay hidden" id="dailyTipOverlay">
+<div aria-labelledby="dailyTipTitle" aria-modal="true" class="daily-tip-card" role="dialog">
+<button aria-label="Close daily tip" class="daily-tip-close" id="dailyTipCloseBtn">×</button>
+<div class="daily-tip-badge">🌟 Daily English Boost</div>
+<div id="dailyTipContent"></div>
+</div>
+</div>
+<button class="daily-tip-float" id="dailyTipFloatBtn" title="Open Daily Tip">🌟</button>
+<div class="toast" id="toast"></div>
+<div class="modal hidden" id="wordModal">
+<div class="modal-card">
+<button class="modal-close" id="closeModalBtn">×</button>
+<h3 id="modalTitle">Add Vocabulary</h3>
+<div class="form-grid">
+<input class="input" id="modalWord" placeholder="word / phrase"/>
+<input class="input" id="modalMeaning" placeholder="arti Indonesia"/>
+<input class="input" id="modalLevel" placeholder="level, contoh: Intermediate"/>
+<input class="input" id="modalTopic" placeholder="topic, contoh: Education"/>
+<input class="input span2" id="modalDefinition" placeholder="definition in English"/>
+<textarea class="textarea small span2" id="modalExample" placeholder="example sentence"></textarea>
+</div>
+<button class="btn primary full" id="saveWordBtn">Save Word</button>
+</div>
+</div>
+</body>
+</html>
